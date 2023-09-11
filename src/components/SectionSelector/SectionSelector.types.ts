@@ -1,5 +1,3 @@
-import { setShowDoneSectionFuncType } from "../../Types/Types";
-
-type SectionSelectorPropType = {setShowDoneSection:setShowDoneSectionFuncType, showDoneSection: boolean}
+type SectionSelectorPropType = {setShowDoneSection:(value:boolean)=>void, showDoneSection: boolean}
 
 export type {SectionSelectorPropType}
