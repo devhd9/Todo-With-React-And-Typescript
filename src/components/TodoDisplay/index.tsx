@@ -4,7 +4,7 @@ import AddItem from './AddItem';
 import AppIcon from '../AppIcon';
 import OverlayInputForm from '../OverlayInputForm';
 import SectionSelector from '../SectionSelector';
-import TodoItems from './TodoItems';
+import TodoItems from '../TodoItems';
 import { addItemInTodoListFuncType, currentItemDataType, deleteItemHandlerFuncType, editItemFuncType, todoItemType, toggleItemMarkedCompletedFuncType } from '../../Types/Types';
 
 export default function TodoDisplay() {
