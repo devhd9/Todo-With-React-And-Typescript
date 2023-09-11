@@ -5,6 +5,7 @@ import AppIcon from '../AppIcon';
 import OverlayInputForm from '../OverlayInputForm';
 import SectionSelector from '../SectionSelector';
 import TodoItems from '../TodoItems';
+import styles from './TodoDisplay.module.css';
 import { addItemInTodoListFuncType, currentItemDataType, deleteItemHandlerFuncType, editItemFuncType, todoItemType, toggleItemMarkedCompletedFuncType } from '../../Types/Types';
 
 export default function TodoDisplay() {
@@ -67,7 +68,7 @@ export default function TodoDisplay() {
     }
 
   return (
-    <div className='todo-app-box todo-app-box-width'>
+    <div className={`${styles['todo-app-box']} ${styles['todo-app-box-width']}`}>
         <AppIcon />
         <SectionSelector showDoneSection={showDoneSection} setShowDoneSection={setShowDoneSection} />
         <TodoItems displayItems={displayItems} editItem={editItem} deleteItemHandler={deleteItemHandler} toggleItemMarkedCompleted={toggleItemMarkedCompleted} />
