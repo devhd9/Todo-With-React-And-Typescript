@@ -1,5 +1,5 @@
-import { addItemInTodoListFuncType, currentItemDataType } from "../../Types/Types";
+import { addItemInTodoListHandlerFuncType, currentItemDataType } from "../../Types/Types";
 
-type OverlayInputFormPropType = {addItemInTodoList:addItemInTodoListFuncType, isNewItem: boolean, currentItemData?: currentItemDataType};
+type OverlayInputFormPropType = {addItemInTodoListHandler:addItemInTodoListHandlerFuncType, isNewItem: boolean, currentItemData?: currentItemDataType};
 
 export type {OverlayInputFormPropType};

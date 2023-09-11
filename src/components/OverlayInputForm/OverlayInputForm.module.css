@@ -54,7 +54,6 @@
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
-    pointer-events: none;
     transition: 0.2s;
     background-color: white;
     padding-left: 2px;

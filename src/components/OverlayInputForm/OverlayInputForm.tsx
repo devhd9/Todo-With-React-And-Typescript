@@ -3,7 +3,7 @@ import { TickIcon } from "../Icons"
 import styles from './OverlayInputForm.module.css'
 import { OverlayInputFormPropType } from "./OverlayInputForm.types";
 
-function OverlayInputForm({addItemInTodoList, isNewItem, currentItemData}:OverlayInputFormPropType) {
+function OverlayInputForm({addItemInTodoListHandler, isNewItem, currentItemData}:OverlayInputFormPropType) {
   const [inputValue, setInputValue] = useState<string>(currentItemData ? currentItemData.title : "");
   function saveValue() {
     const dataObj = {
@@ -11,10 +11,10 @@ function OverlayInputForm({addItemInTodoList, isNewItem, currentItemData}:Overla
         title: inputValue,
         existingUniqueId: currentItemData?.id || null
     }
-    addItemInTodoList(dataObj)
+    addItemInTodoListHandler(dataObj)
   }
   return (
-    <div className={`${styles.overlay} pointer-hover"`} id="overlay" onClick={saveValue}>
+    <div className={`${styles.overlay} pointer-hover"`} id="overlay">
             <div className={`${styles['form-container']} ${styles['form-width']}`}>
                 <p>Add new todo</p>
                 <div className={styles['input-container']}>
