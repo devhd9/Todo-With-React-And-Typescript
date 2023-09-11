@@ -1,5 +1,3 @@
-import { setIsAddingItemFuncType } from "../../Types/Types";
-
-type AddItemPropType = {setIsAddingItem:setIsAddingItemFuncType};
+type AddItemPropType = {setIsAddingItem:(value:boolean)=>void};
 
 export type {AddItemPropType}

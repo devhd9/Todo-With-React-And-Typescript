@@ -18,6 +18,4 @@ type deleteItemHandlerFuncType = (id: string)=>void
 
 type toggleItemMarkedCompletedFuncType = (id:string)=>void;
 
-type setIsAddingItemFuncType = (value:boolean)=>void;
-
-export type {currentItemDataType, addItemInTodoListParamType, addItemInTodoListFuncType, todoItemType, setShowDoneSectionFuncType, editItemFuncType, deleteItemHandlerFuncType, toggleItemMarkedCompletedFuncType, setIsAddingItemFuncType}
+export type {currentItemDataType, addItemInTodoListParamType, addItemInTodoListFuncType, todoItemType, setShowDoneSectionFuncType, editItemFuncType, deleteItemHandlerFuncType, toggleItemMarkedCompletedFuncType}
