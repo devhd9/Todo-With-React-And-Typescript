@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import uuid from 'uuidv4';
 import AddItem from '../AddItem';
 import AppIcon from '../AppIcon';
 import OverlayInputForm from '../OverlayInputForm';
 import SectionSelector from '../SectionSelector';
 import TodoItems from '../TodoItems';
 import styles from './TodoDisplay.module.css';
-import { addItemInTodoListFuncType, currentItemDataType, deleteItemHandlerFuncType, editItemFuncType, todoItemType, toggleItemMarkedCompletedFuncType } from '../../Types/Types';
+import { addItemInTodoListHandlerFuncType, currentItemDataType, deleteItemHandlerFuncType, editItemFuncType, todoDataSaveHandlerFuncType, todoItemType, toggleItemMarkedCompletedHandlerFuncType } from '../../Types/Types';
+import getTodoItemsToDisplay, { addItemInTodoList, removeItemFromTodoData, toggleItemMarkedCompleted } from '../../utils/todoDataCrudOperation';
+import { getTodoDataFromLocalStorage, setTodoDataInLocalStorage } from '../../utils/localStorageOperation';
 
 export default function TodoDisplay() {
     const [todoData, setTodoData] = useState<todoItemType[]>([]);
@@ -15,35 +16,20 @@ export default function TodoDisplay() {
     const [showDoneSection, setShowDoneSection] = useState<boolean>(false);
     const [currentItemData, setCurrentItemData] = useState<currentItemDataType>({id: "", title: ""});
 
-    const displayItems = showDoneSection ? todoData.filter(({isCompleted})=> isCompleted) : todoData.filter(({isCompleted})=> !isCompleted);
-
-    const localStorageData = localStorage.getItem('todoData')
-    if (todoData.length === 0 && (typeof localStorageData === 'string') && localStorageData !== '[]') {
-        todoDataSaveHandler(JSON.parse(localStorageData));
-    }
-
-    function todoDataSaveHandler(data: todoItemType[]) {
+    const displayItems = getTodoItemsToDisplay(showDoneSection, todoData);
+    
+    const todoDataSaveHandler:todoDataSaveHandlerFuncType = (data: todoItemType[]) => {
         setTodoData(data);
-        localStorage.setItem('todoData', JSON.stringify(data));
+        setTodoDataInLocalStorage(data)
     }
 
-    const addItemInTodoList:addItemInTodoListFuncType = ({isNewItem, title, existingUniqueId}) => {
-        if (title.trim()) {
-            if (isNewItem) {
-                const newData = [...todoData, {title, id: uuid(), isCompleted: false}]
-                todoDataSaveHandler(newData);
-                setIsAddingItem(false);
-            } else {
-                const newTodoData = todoData.map((dataObj)=>{
-                    if (dataObj.id === existingUniqueId) {
-                        dataObj.title = title
-                    }
-                    return dataObj;
-                })
-                todoDataSaveHandler(newTodoData);
-                setIsEditingItem(false);
-            }
-        }
+    const localStorageData = getTodoDataFromLocalStorage();
+    if (todoData.length === 0 && localStorageData && localStorageData.length !== 0) {
+        todoDataSaveHandler(localStorageData);
+    }
+
+    const addItemInTodoListHandler:addItemInTodoListHandlerFuncType = ({isNewItem, title, existingUniqueId}) => {
+        addItemInTodoList({isNewItem, title, existingUniqueId, todoData, todoDataSaveHandler, setIsAddingItem, setIsEditingItem})
     }
 
     const editItem: editItemFuncType = (uniqueId, currentTitle) => {
@@ -55,15 +41,12 @@ export default function TodoDisplay() {
     }
 
     const deleteItemHandler: deleteItemHandlerFuncType = (uniqueId) => {
-        const newData = todoData.filter(({id})=> id !== uniqueId)
+        const newData = removeItemFromTodoData(uniqueId, todoData)
         todoDataSaveHandler(newData);
     }
 
-    const toggleItemMarkedCompleted: toggleItemMarkedCompletedFuncType = (id) => {
-        const newData = todoData.map((obj)=>{
-                if (obj.id === id) obj.isCompleted = !obj.isCompleted;
-                return obj;
-            })
+    const toggleItemMarkedCompletedHandler: toggleItemMarkedCompletedHandlerFuncType = (id) => {
+        const newData = toggleItemMarkedCompleted(id, todoData);
         todoDataSaveHandler(newData)
     }
 
@@ -71,13 +54,13 @@ export default function TodoDisplay() {
     <div className={`${styles['todo-app-box']} ${styles['todo-app-box-width']}`}>
         <AppIcon />
         <SectionSelector showDoneSection={showDoneSection} setShowDoneSection={setShowDoneSection} />
-        <TodoItems displayItems={displayItems} editItem={editItem} deleteItemHandler={deleteItemHandler} toggleItemMarkedCompleted={toggleItemMarkedCompleted} />
+        <TodoItems displayItems={displayItems} editItem={editItem} deleteItemHandler={deleteItemHandler} toggleItemMarkedCompletedHandler={toggleItemMarkedCompletedHandler} />
         <AddItem setIsAddingItem={setIsAddingItem} />
         {
-            isAddingItem ? <OverlayInputForm addItemInTodoList={addItemInTodoList} isNewItem={true} /> : <></>
+            isAddingItem ? <OverlayInputForm addItemInTodoListHandler={addItemInTodoListHandler} isNewItem={true} /> : <></>
         }
         {
-            isEditingItem ? <OverlayInputForm addItemInTodoList={addItemInTodoList} isNewItem={false} currentItemData={currentItemData} /> : <></>
+            isEditingItem ? <OverlayInputForm addItemInTodoListHandler={addItemInTodoListHandler} isNewItem={false} currentItemData={currentItemData} /> : <></>
         }
     </div>
   )
