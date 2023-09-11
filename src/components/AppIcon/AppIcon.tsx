@@ -4,7 +4,7 @@ import styles from './AppIcon.module.css'
 function AppIcon() {
   return (
     <div className={`${styles['icon-container']}`}>
-            <img className='app-icon' src={logo} alt='logo' />
+            <img className={styles['app-icon']} src={logo} alt='logo' />
     </div>
   )
 }
