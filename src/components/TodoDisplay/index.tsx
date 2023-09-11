@@ -3,7 +3,7 @@ import uuid from 'uuidv4';
 import AddItem from './AddItem';
 import AppIcon from '../AppIcon';
 import OverlayInputForm from '../OverlayInputForm';
-import SectionSelector from './SectionSelector';
+import SectionSelector from '../SectionSelector';
 import TodoItems from './TodoItems';
 import { addItemInTodoListFuncType, currentItemDataType, deleteItemHandlerFuncType, editItemFuncType, todoItemType, toggleItemMarkedCompletedFuncType } from '../../Types/Types';
 

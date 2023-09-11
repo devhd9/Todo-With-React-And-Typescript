@@ -43,24 +43,6 @@ html, body, #root, .app-container {
   margin: 40px auto;
 }
 
-.select-section-container {
-  display: flex;
-}
-
-.section-select-item {
-  flex-grow: 1;
-  text-align: center;
-  padding-bottom: 15px;
-}
-
-.selected-section-header {
-  border-bottom: 3px solid #1976d2;
-}
-
-.non-selected-section-header {
-  border-bottom: 1px solid #b6b0b0;
-}
-
 .todo-item-container {
   display: flex;
   background-color: #F0F8FF;
