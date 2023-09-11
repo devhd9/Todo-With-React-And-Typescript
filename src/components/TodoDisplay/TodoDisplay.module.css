@@ -1,24 +1,24 @@
 .todo-app-box {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    margin: 20px auto;
-    border-radius: 10px;
-    min-width: 350px;
-  }
-  
-  .todo-app-box-width {
-    width: 33%;
-  }
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 20px auto;
+  border-radius: 10px;
+  min-width: 350px;
+}
 
-  @media screen and (max-width: 768px) {
-    .todo-app-box-width {
-      width: 95%;
-    }
+.todo-app-box-width {
+  width: 33%;
+}
+
+@media screen and (max-width: 768px) {
+  .todo-app-box-width {
+    width: 95%;
   }
-  
-  @media screen and (min-width: 769px) and (max-width: 1200px) {
-    .todo-app-box-width {
-      width: 50%;
-    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  .todo-app-box-width {
+    width: 50%;
   }
+}

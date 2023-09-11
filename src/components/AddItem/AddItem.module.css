@@ -1,8 +1,8 @@
 .add-button-container {
-    display: flex;
-    justify-content: center;
-    color: #1976d2;
-    font-size: 20px;
-    margin-top: auto;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  justify-content: center;
+  color: #1976d2;
+  font-size: 20px;
+  margin-top: auto;
+  margin-bottom: 20px;
+}

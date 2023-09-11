@@ -1,3 +1,3 @@
 import SectionSelector from "./SectionSelector";
 
-export default SectionSelector
+export default SectionSelector;

@@ -1,8 +1,8 @@
 .icon-container {
-    display: flex;
-  }
+  display: flex;
+}
 
-  .app-icon {
-    height: 30px;
-    margin: 40px auto;
-  }
+.app-icon {
+  height: 30px;
+  margin: 40px auto;
+}

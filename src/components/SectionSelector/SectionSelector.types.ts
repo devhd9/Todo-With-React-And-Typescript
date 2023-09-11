@@ -1,3 +1,6 @@
-type SectionSelectorPropType = {setShowDoneSection:(value:boolean)=>void, showDoneSection: boolean}
+type SectionSelectorPropType = {
+  setShowDoneSection: (value: boolean) => void;
+  showDoneSection: boolean;
+};
 
-export type {SectionSelectorPropType}
+export type { SectionSelectorPropType };

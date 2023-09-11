@@ -1,3 +1,3 @@
-type AddItemPropType = {setIsAddingItem:(value:boolean)=>void};
+type AddItemPropType = { setIsAddingItem: (value: boolean) => void };
 
-export type {AddItemPropType}
+export type { AddItemPropType };

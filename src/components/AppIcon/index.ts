@@ -1,3 +1,3 @@
 import AppIcon from "./AppIcon";
 
-export default AppIcon
+export default AppIcon;

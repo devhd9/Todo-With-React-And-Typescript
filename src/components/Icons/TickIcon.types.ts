@@ -1,3 +1,3 @@
-type TickIconPropType = {size:string}
+type TickIconPropType = { size: string };
 
-export type {TickIconPropType}
+export type { TickIconPropType };

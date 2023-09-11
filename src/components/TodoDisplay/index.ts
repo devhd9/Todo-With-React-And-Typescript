@@ -1,3 +1,3 @@
 import TodoDisplay from "./TodoDisplay";
 
-export default TodoDisplay
+export default TodoDisplay;
