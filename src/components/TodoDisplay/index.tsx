@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import uuid from 'uuidv4';
-import AddItem from './AddItem';
+import AddItem from '../AddItem';
 import AppIcon from '../AppIcon';
 import OverlayInputForm from '../OverlayInputForm';
 import SectionSelector from '../SectionSelector';

@@ -1,10 +1,10 @@
-import React from 'react'
 import { AddIcon } from '../Icons'
-import { setIsAddingItemFuncType } from '../../Types/Types'
+import styles from './AddItem.module.css'
+import { AddItemPropType } from './AddItem.types'
 
-function AddItem({setIsAddingItem}:{setIsAddingItem:setIsAddingItemFuncType}) {
+function AddItem({setIsAddingItem}:AddItemPropType) {
   return (
-    <div className='add-button-container'>
+    <div className={styles['add-button-container']}>
             <span onClick={()=>{setIsAddingItem(true)}} className='pointer-hover'>
                 <AddIcon size='40' />
             </span>
